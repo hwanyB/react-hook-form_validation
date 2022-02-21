@@ -12,7 +12,7 @@ const style = css`
         gap: 10px;
         width: 100%;
         align-items: center;
-        padding: 30px 50px;
+        padding: 30px 200px;
         box-sizing: border-box;
         box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
         z-index: 99;
@@ -27,6 +27,28 @@ const style = css`
         color: black;
         font-weight: 500;
     }
+
+
+    @media screen and (max-width: 1600px) {
+      nav {
+        padding: 30px 100px;
+    }
+  }
+    @media screen and (max-width: 1200px) {
+      nav {
+        padding: 30px 80px;
+    }
+  }
+    @media screen and (max-width: 800px) {
+      nav {
+        padding: 30px 60px;
+    }
+  }
+    @media screen and (max-width: 550px) {
+      nav {
+        padding: 30px 40px;
+    }
+  }
 `;
 
 
