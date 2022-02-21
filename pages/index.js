@@ -63,20 +63,12 @@ const style = css`
 `;
 
 
-export default function Home() {
-  const [movies, setMovies] = useState();
-  useEffect(() => {
-    (async () => {
-      const { results } = await (await fetch("/api/movies")).json();
-      setMovies(results);
-    })();
-  }, []);
+export default function Home({results }) {
   return (
     <>
       <Seo title='Home' />
-      {!movies && <h2>Loading....</h2>}
       <div className='movieContainer'>
-        {movies?.map((movie) => (
+        {results?.map((movie) => (
           <div className='movieCard' key={movie.id}>
             <div className='movieImgWrapper'>
               <img
@@ -92,3 +84,14 @@ export default function Home() {
     </>
   );
 }
+
+export async function getServerSideProps() {
+    const { results } = await (
+      await fetch(`http://localhost:3000/api/movies`)
+    ).json();
+    return {
+      props: {
+        results,
+      },
+    };
+  }
